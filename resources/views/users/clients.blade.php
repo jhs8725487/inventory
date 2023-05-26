@@ -43,11 +43,12 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <a href="" class="btn btn-success" >Add Client</a>
+              <a href="{{ route('register-client') }}" class="btn btn-success" >Add Client</a>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>#</th>
+                    <th>Image</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Calles</th>
@@ -60,12 +61,16 @@
                     @foreach ($clients as $client)
                     <tr>
                     <td>{{ $client->id }}</td>
+                    <td>
+                    <img src="{{ $client->default_image ?? asset('images/client.png') }}" alt="Client Image" style="width: 80px; height: auto;">
+                    
+                    </td>
                     <td>{{ $client->name }}</td>
                     <td>{{ $client->email }}</td>
                     <td>{{ $client->address_street }}</td>
                     <td>{{ $client->phone_number }}</td>
                     <td>
-               
+                    <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-primary">Update</a>
                     </td>
                     </tr>
                     @endforeach
@@ -76,6 +81,7 @@
                   <tfoot>
                   <tr>
                     <th>#</th>
+                    <th>Image</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Calles</th>
